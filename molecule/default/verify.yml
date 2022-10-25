@@ -5,9 +5,17 @@
   gather_facts: no
 
   tasks:
-  - name: check if some background exists
-    ansible.builtin.shell:
-      cmd: ls -p /usr/share/backgrounds | grep -v / | wc -l
-    register: out
-    failed_when:
-      - not out.stdout 0
+
+    - name: Check if requirements.txt was cloned
+      ansible.builtin.stat:
+        path: '/potos/requirements.yml'
+      register: out
+      failed_when:
+        - not out.stat.exists
+
+    - name: Check if collections.txt was cloned
+      ansible.builtin.stat:
+        path: '/potos/requirements.yml'
+      register: out
+      failed_when:
+        - not out.stat.exists

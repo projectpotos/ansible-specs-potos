@@ -1,4 +1,3 @@
-
 ---
 
 - name: Prepare
@@ -7,7 +6,38 @@
 
   tasks:
   # Update the apt cache as it's potentialy outdated in the container
-  - name: update pacman cache
-    ansible.builtin.command:
-      apt update && apt upgrade -y
+  - name: Update apt
+    ansible.builtin.shell:  # noqa: command-instead-of-module
+      cmd: apt-get update && apt-get upgrade -y
     when: ansible_distribution == 'Ubuntu'
+
+  - name: Install git
+    ansible.builtin.package:
+      name:
+        - 'git'
+        - 'python3-pip'
+
+  - name: Install ansible
+    ansible.builtin.shell:  # noqa: command-instead-of-module
+      cmd: python3 -m pip install ansible>2.12
+    changed_when: false
+
+  - name: Checkout potos playbook
+    ansible.builtin.git:
+      repo: 'https://github.com/projectpotos/ansible-plays-potos.git'
+      dest: '/potos'
+      version: 'main'
+
+  - name: Create repo place
+    ansible.builtin.file:
+      path: '/potos/specs'
+      state: directory
+      recurse: yes
+
+  - name: Copy repo to container
+    ansible.builtin.copy:
+      src: '{{ (playbook_dir, "../../") | path_join }}'
+      dest: '/potos/specs/'
+      owner: root
+      group: root
+      mode: '0766'

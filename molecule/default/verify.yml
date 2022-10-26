@@ -6,16 +6,16 @@
 
   tasks:
 
-    - name: Check if requirements.txt was cloned
+    - name: Check if requirements template was cloned
       ansible.builtin.stat:
-        path: '/potos/requirements.yml'
+        path: '/potos/templates/requirements.yml.j2'
       register: out
       failed_when:
         - not out.stat.exists
 
-    - name: Check if collections.txt was cloned
+    - name: Check if collections.yml was cloned
       ansible.builtin.stat:
-        path: '/potos/requirements.yml'
+        path: '/potos/collections.yml'
       register: out
       failed_when:
         - not out.stat.exists

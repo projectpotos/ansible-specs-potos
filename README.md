@@ -6,8 +6,8 @@ This repository contains the specification for Potos Vanilla and can be used as 
 
 ## Most important files
 
-### `templates/requirements.yml.j2`
-A dynamic ansible galaxy requirements files for roles to be executed in that run. Have a look [here](https://github.com/potosproject/ansible-specs-potos/tree/main/templates/requirements.yml.j2) for an example
+### `files/templates/requirements.yml.j2`
+A dynamic ansible galaxy requirements files for roles to be executed in that run. Have a look [here](https://github.com/potosproject/ansible-specs-potos/tree/main/files/templates/requirements.yml.j2) for an example
 
 ### `templates/collections.yml.j2`
 List with required collections that need to be installed e.g.
@@ -24,7 +24,7 @@ or [here](https://github.com/potosproject/ansible-specs-potos/tree/main/template
 
 # Templates
 
-Get applied the templating engine during the playbook run
+Get applied the templating engine before the playbook run
 
 # Files
 

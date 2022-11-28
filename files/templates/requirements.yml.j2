@@ -1,5 +1,9 @@
 ---
-
+{% if runtype == 'firstboot' %}
+- name: firstboot
+  src: git+https://github.com/projectpotos/ansible-role-potos_firstboot
+  version: 'main'
+{% endif %}
 - name: basics
   src: git+https://github.com/projectpotos/ansible-role-potos_basics.git
   version: 'main'

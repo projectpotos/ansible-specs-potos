@@ -7,5 +7,5 @@ ansible-lint[yamllint]
 molecule[docker, lint]
 
 docker~=6.0.1
-molecule~=4.0.4
+molecule~=5.0.0
 molecule-docker~=2.1.0

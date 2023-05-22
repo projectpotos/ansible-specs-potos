@@ -5,7 +5,7 @@ ansible>=2.12
 # Required for testing
 
 ## ansible/yaml lint
-ansible-lint~=6.15.0
+ansible-lint~=6.16.2
 yamllint~=1.31.0
 
 ## molecule tests
